@@ -1,0 +1,84 @@
+@mixin reset-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@mixin center {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin hide {
+  display: none;
+}
+
+@mixin triangle() {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid rebeccapurple;
+}
+
+@mixin animate($duration) {
+  animation-name: animate;
+  animation-duration: $duration;
+  animation-iteration-count: infinite;
+
+  @keyframes animate {
+    0% {
+      transform: scale(0.2);
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.4);
+      opacity: 0;
+    }
+  }
+}
+
+$font: (
+  xs: 12px,
+  sm: 14px,
+  m: 16px,
+  l: 32px,
+  xl: 48px,
+  xxl: 61px,
+);
+
+@mixin font($size) {
+  @if $size == "xs" {
+    font-size: map-get($font, $size);
+  } @else if $size == "sm" {
+    font-size: map-get($font, $size);
+  } @else if $size == "m" {
+    font-size: map-get($font, $size);
+  } @else if $size == "l" {
+    font-size: map-get($font, $size);
+  } @else if $size == "xl" {
+    font-size: map-get($font, $size);
+  } @else if $size == "xxl" {
+    font-size: map-get($font, $size);
+  } @else {
+    @error "Argument for the Mixin >font< must be either xs, sm, m, l, xl or xxl.";
+  }
+}
+
+// another way of doing it - since SASS also understand OR:
+
+// @mixin font($size) {
+//   @if $size == "xs" or "sm" or "m" or "l" or "xl" or "xxl" {
+//     font-size: map-get($font, $size);
+//   } @else {
+//     @error "Argument for the Mixin >font< must be either xs, sm, m, l, xl or xxl";
+//   }
+// }
